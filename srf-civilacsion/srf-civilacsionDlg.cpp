@@ -138,9 +138,9 @@ BOOL CsrfcivilacsionDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 <<<<<<< HEAD
 	SetIcon(m_hIcon, FALSE);
-	SetTimer(1,100,NULL);
-	SetTimer(2,6000,NULL);
-	SetTimer(3,36000,NULL);// 设置小图标
+	SetTimer(1,1000,NULL);
+	SetTimer(2,60000,NULL);
+	SetTimer(3,360000,NULL);// 设置小图标
 =======
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 >>>>>>> origin/master
@@ -485,6 +485,9 @@ void CsrfcivilacsionDlg::OnTimer(UINT_PTR nIDEvent)
 	int x,x1,y,y1,ox=450,oy=450;
 	int x2,y2,x3,y3;
 	int x4,y4,x5,y5;
+	
+
+	
 	 
 if(nIDEvent==1)
   {
@@ -608,6 +611,16 @@ if(nIDEvent==3)
      CPen* pOldPen=pDC6->SelectObject(&pen);
      pDC6->SelectStockObject(NULL_BRUSH);
      pDC6->Ellipse(ox - 100, oy - 100 , ox +100, oy +100);
+	 for(int i=0;i<12;i++)
+	{
+		double l=96,ag=i*3.14159/6;
+		double a=l*sin(ag)+2+ox,b=-l*cos(ag)+2+oy,c=l*sin(ag)-2+ox,d=-l*cos(ag)-2+oy;
+		pDC6->Ellipse(a,b,c,d);
+	}
+	 pDC6->TextOutW(440,360,L"12");
+	pDC6->TextOutW(530,440,L"3");
+	pDC6->TextOutW(450,530,L"6");
+	pDC6->TextOutW(360,440,L"9");
      pDC6->SelectObject(pOldPen);
 }
 
